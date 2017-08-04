@@ -19,6 +19,7 @@ module.exports = {
         rules: [{
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
+            	fallback: "style-loader",
                 use: "css-loader"
             })
             // use: ["style-loader","css-loader"]
@@ -38,7 +39,7 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common', // Specify the common bundle's name.
-            filename:"common/[name]-[hash].js"
+            filename:"common/[name].js"
         }),
         new ManifestPlugin(),
         new ExtractTextPlugin({
